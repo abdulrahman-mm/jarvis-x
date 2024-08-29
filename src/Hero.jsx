@@ -155,7 +155,7 @@ function Hero() {
   return (
     <main className="h-screen w-screen text-white">
       <div className="w-full h-full bg-black flex flex-col items-center justify-center">
-        <img src={ironman} className="h-[500px]" alt="Loading animation" />
+        <img src={ironman} className="md:h-[500px] h-[400px]" alt="Loading animation" />
 
         {isListening && (
           <img
@@ -165,7 +165,7 @@ function Hero() {
           />
         )}
 
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-6 pb-10">
           {!buttonClicked && (
             <input
               value={name}
@@ -173,14 +173,14 @@ function Hero() {
               type="text"
               placeholder="Enter Your Name"
               className={`p-3 h-14 outline-none border-none bg-gray-900 rounded-full ${
-                isListening ? "" : "mt-14"
+                isListening ? "" : "md:mt-14"
               }`}
             />
           )}
 
           <button
             className={`text-white bg-slate-600 bg-gradient-to-r from-red-600 to-violet-600  p-3 rounded-full ${
-              isListening ? "" : "mt-14"
+              isListening ? "" : "md:mt-14 "
             }`}
             onClick={startListening}
           >
