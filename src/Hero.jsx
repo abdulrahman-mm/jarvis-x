@@ -87,14 +87,6 @@ function Hero() {
       window.open("mailto:someone@example.com");
       speak("Opening gmail ");
     } 
-    else if (
-      message.includes("what") ||
-      message.includes("who") ||
-      message.includes("what are")
-    ) {
-      window.open(`https://www.google.com/search?q=${message}`, "_blank");
-      speak(`This is what I found on the internet regarding ${message}`);
-    }
     else if (message.includes("battery percentage") || message.includes("battery level")) {
       navigator.getBattery().then(function (battery) {
         speak(`Battery level: ${(battery.level * 100).toFixed(0)} %`);
@@ -121,7 +113,8 @@ function Hero() {
         weekday: "long",
       });
       speak(day);
-    }  else {
+    }  
+    else {
       window.open(`https://www.google.com/search?q=${message}`, "_blank");
       speak(`I found some information for ${message} on Google`);
     }
