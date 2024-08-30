@@ -77,8 +77,13 @@ function Hero() {
       window.open("Calculator:///");
       speak("Opening Calculator ");
     } else if (message.includes("open whatsapp")) {
-      window.open("https://wa.me/");
-      speak("Opening whatsapp ");
+      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = "whatsapp://send";
+        speak("Opening whatsapp ");
+      } else {
+        window.open("https://wa.me/");
+        speak("Opening whatsapp ");
+      }
     } else if (
       message.includes("open mail") ||
       message.includes("open gmail")
@@ -152,8 +157,14 @@ function Hero() {
   return (
     <main className="h-screen w-screen text-white">
       <div className="w-full h-full bg-black flex flex-col items-center justify-center">
-        <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">JARVISXX AI <span className="text-slate-400">voice assistant</span> </p>
-        <img src={ironman} className="md:h-[500px] h-[400px] mx-auto object-cover" alt="Loading animation" />
+        <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+          JARVISXX AI <span className="text-slate-400">voice assistant</span>{" "}
+        </p>
+        <img
+          src={ironman}
+          className="md:h-[500px] h-[400px] mx-auto object-cover"
+          alt="Loading animation"
+        />
 
         {isListening && (
           <img
