@@ -65,7 +65,7 @@ function Hero() {
       window.open("https://chatgpt.com/", "_blank");
       speak("Opening chat gpt");
     } else if (message.includes("open gemini")) {
-      window.open("https://gemini.google.com/app", "_blank");
+      window.open("https://gemini.google.com/", "_blank");
       speak("Opening gemini");
     } else if (message.includes("open vs code")) {
       window.open("https://vscode.dev/", "_blank");
@@ -77,7 +77,7 @@ function Hero() {
       window.open("Calculator:///");
       speak("Opening Calculator ");
     } else if (message.includes("open whatsapp")) {
-      window.open("https://wa.me/");
+      window.open("https://www.whatsapp.com/");
       speak("Opening whatsapp ");
     } else if (
       message.includes("open mail") ||
