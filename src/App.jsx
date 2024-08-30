@@ -1,7 +1,12 @@
 import Hero from "./Hero";
 
 function App() {
-  return <Hero />;
+  return (
+    <div>
+       <Hero />
+    </div>
+   
+  )
 }
 
 export default App;

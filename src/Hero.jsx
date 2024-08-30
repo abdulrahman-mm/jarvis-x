@@ -46,8 +46,7 @@ function Hero() {
       message.includes("hello") ||
       message.includes("hai") ||
       message.includes("hi") ||
-      message.includes("hey") ||
-      message.includes("jarvis")
+      message.includes("hey") 
     ) {
       speak(welcomeMessage);
     } else if (message.includes("open google")) {
