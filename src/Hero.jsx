@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import ironman from "./assets/ironman.gif";
 import audiospectrum from "./assets/audiospectrum.gif";
 import { CiMicrophoneOn } from "react-icons/ci";
@@ -77,15 +78,24 @@ function Hero() {
       window.open("Calculator:///");
       speak("Opening Calculator ");
     } else if (message.includes("open whatsapp")) {
-        window.open("https://wa.me/6382381862");
-        speak("Opening whatsapp ");
+      window.open("https://wa.me/6382381862");
+      speak("Opening whatsapp ");
     } else if (
       message.includes("open mail") ||
       message.includes("open gmail")
     ) {
       window.open("mailto:someone@example.com");
       speak("Opening gmail ");
-    } else if (message.includes("battery")) {
+    } 
+    else if (
+      message.includes("what") ||
+      message.includes("who") ||
+      message.includes("what are")
+    ) {
+      window.open(`https://www.google.com/search?q=${message}`, "_blank");
+      speak(`This is what I found on the internet regarding ${message}`);
+    }
+    else if (message.includes("battery percentage") || message.includes("battery level")) {
       navigator.getBattery().then(function (battery) {
         speak(`Battery level: ${(battery.level * 100).toFixed(0)} %`);
       });
@@ -111,14 +121,7 @@ function Hero() {
         weekday: "long",
       });
       speak(day);
-    } else if (
-      message.includes("what is") ||
-      message.includes("who is") ||
-      message.includes("what are")
-    ) {
-      window.open(`https://www.google.com/search?q=${message}`, "_blank");
-      speak(`This is what I found on the internet regarding ${message}`);
-    } else {
+    }  else {
       window.open(`https://www.google.com/search?q=${message}`, "_blank");
       speak(`I found some information for ${message} on Google`);
     }
@@ -151,25 +154,47 @@ function Hero() {
 
   return (
     <main className="h-screen w-screen text-white">
-      <div className="w-full h-full bg-black flex flex-col items-center justify-center">
-        <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
-          JARVISXX AI <span className="text-slate-400">voice assistant</span>{" "}
-        </p>
-        <img
+      <motion.div
+        className="w-full h-full bg-black flex flex-col items-center justify-center overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      >
+        <motion.p
+          className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent"
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 2, delay: 1 }}
+        >
+          JARVISXX AI <span className="text-slate-400">voice assistant</span>
+        </motion.p>
+
+        <motion.img
           src={ironman}
           className="md:h-[500px] h-[400px] mx-auto object-cover"
           alt="Loading animation"
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1 }}
         />
 
         {isListening && (
-          <img
+          <motion.img
             src={audiospectrum}
             className="w-52 h-10 object-cover mb-5"
             alt="Audio Spectrum"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
           />
         )}
 
-        <div className="flex flex-col md:flex-row items-center gap-6 pb-2">
+        <motion.div
+          className="flex flex-col md:flex-row items-center gap-6 pb-2"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
           {!buttonClicked && (
             <input
               value={name}
@@ -193,8 +218,8 @@ function Hero() {
               <p>{text}</p>
             </div>
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </main>
   );
 }
