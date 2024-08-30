@@ -77,7 +77,7 @@ function Hero() {
       window.open("Calculator:///");
       speak("Opening Calculator ");
     } else if (message.includes("open whatsapp")) {
-      window.open("https://www.whatsapp.com/");
+      window.open("https://wa.me/");
       speak("Opening whatsapp ");
     } else if (
       message.includes("open mail") ||
