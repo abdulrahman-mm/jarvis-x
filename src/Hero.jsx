@@ -77,7 +77,7 @@ function Hero() {
       window.open("Calculator:///");
       speak("Opening Calculator ");
     } else if (message.includes("open whatsapp")) {
-      window.open("whatsapp:///");
+      window.open("https://wa.me/");
       speak("Opening whatsapp ");
     } else if (
       message.includes("open mail") ||
@@ -85,9 +85,6 @@ function Hero() {
     ) {
       window.open("mailto:someone@example.com");
       speak("Opening gmail ");
-    } else if (message.includes("open settings")) {
-      window.open("ms-settings:display");
-      speak("Opening Settings ");
     } else if (message.includes("battery")) {
       navigator.getBattery().then(function (battery) {
         speak(`Battery level: ${(battery.level * 100).toFixed(0)} %`);
@@ -155,7 +152,8 @@ function Hero() {
   return (
     <main className="h-screen w-screen text-white">
       <div className="w-full h-full bg-black flex flex-col items-center justify-center">
-        <img src={ironman} className="md:h-[500px] h-[400px]" alt="Loading animation" />
+        <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">JARVISXX AI <span className="text-slate-400">voice assistant</span> </p>
+        <img src={ironman} className="md:h-[500px] h-[400px] mx-auto object-cover" alt="Loading animation" />
 
         {isListening && (
           <img
@@ -165,7 +163,7 @@ function Hero() {
           />
         )}
 
-        <div className="flex flex-col md:flex-row items-center gap-6 pb-10">
+        <div className="flex flex-col md:flex-row items-center gap-6 pb-2">
           {!buttonClicked && (
             <input
               value={name}
